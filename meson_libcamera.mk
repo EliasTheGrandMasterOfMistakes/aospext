@@ -17,12 +17,13 @@ LOCAL_SHARED_LIBRARIES := libc libexif libjpeg libdl libudev libevent libcrypto
 AOSPEXT_GEN_PKGCONFIGS := libexif libjpeg dl libudev libevent_pthreads libcrypto
 
 MESON_BUILD_ARGUMENTS := \
-    -Dwerror=false                                                           \
+    -Dwerror=false \
+    -Dandroid=enabled \
     -Dipas=$(subst $(space),$(comma),$(BOARD_LIBCAMERA_IPAS))                \
     -Dpipelines=$(subst $(space),$(comma),$(BOARD_LIBCAMERA_PIPELINES))      \
     -Dsysconfdir=/vendor/etc                                                 \
     -Dtest=false                                                             \
-    -Dlc-compliance=disabled                                                 \
+    -Dlc-compliance=enabled                                                 \
     -Dcam=enabled                                                            \
     $(BOARD_LIBCAMERA_EXTRA_MESON_ARGS)
 
